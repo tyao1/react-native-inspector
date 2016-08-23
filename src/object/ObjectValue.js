@@ -33,9 +33,11 @@ const ObjectValue = ({ object }, { theme }) => {
       }
       return <span>{object.constructor.name}</span>
     case 'function':
+      const funcBody = object.toString();
       return <span>
                 <span style={styles.objectValueFunctionKeyword}>function</span>
-                <span style={styles.objectValueFunctionName}>&nbsp;{object.name}()</span>
+                <span style={styles.objectValueFunctionName}>&nbsp;{object.name}()&nbsp;</span>
+                <span style={styles.objectValueFunctionBody}>{funcBody.substring(funcBody.indexOf('{'), funcBody.lastIndexOf('}') + 1)}</span>
               </span>
     case 'symbol':
       return <span style={styles.objectValueSymbol}>{object.toString()}</span>
